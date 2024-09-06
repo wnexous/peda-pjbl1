@@ -131,73 +131,80 @@ def menu():
         print("7. Exibir dados do último vagão")
         print("8. Sair")
 
-        opcao = input("Escolha uma opção: ")
+        opcao = int(input("Escolha uma opção: "))
 
-        if opcao == "1":
-            tipo = input(
-                "Tipo de vagão (Locomotiva, Passageiros, Carga): ").lower()
-            if tipo == "locomotiva":
+        if opcao == 1:
+            tipo = int(input(
+                "Tipo de vagão (1 - Locomotiva, 2 - Passageiros, 3 - Carga): "))
+            if tipo == 1:
                 comprimento = float(input("Comprimento: "))
                 peso = float(input("Peso: "))
                 potencia = float(input("Potência: "))
                 vagao = Locomotiva(comprimento, peso, potencia)
-            elif tipo == "passageiros":
+            elif tipo == 2:
                 comprimento = float(input("Comprimento: "))
                 peso = float(input("Peso: "))
                 num_passageiros = int(input("Número de passageiros: "))
                 vagao = VagaoPassageiros(comprimento, peso, num_passageiros)
-            elif tipo == "carga":
+            elif tipo == 3:
                 comprimento = float(input("Comprimento: "))
                 peso = float(input("Peso total: "))
                 vagao = VagaoCarga(comprimento, peso)
+            else:
+                print("Opção inválida!")
+                break
+
             composicao.inserir_vagao_frente(vagao)
             composicao.gravar_no_arquivo(nome_arquivo)
 
-        elif opcao == "2":
-            # Similar ao caso 1, mas inserindo no final
-            tipo = input(
-                "Tipo de vagão (Locomotiva, Passageiros, Carga): ").lower()
-            if tipo == "locomotiva":
+        elif opcao == 2:
+            tipo = int(input(
+                "Tipo de vagão (1 - Locomotiva, 2 - Passageiros, 3 - Carga): "))
+            if tipo == 1:
                 comprimento = float(input("Comprimento: "))
                 peso = float(input("Peso: "))
                 potencia = float(input("Potência: "))
                 vagao = Locomotiva(comprimento, peso, potencia)
-            elif tipo == "passageiros":
+            elif tipo == 2:
                 comprimento = float(input("Comprimento: "))
                 peso = float(input("Peso: "))
                 num_passageiros = int(input("Número de passageiros: "))
                 vagao = VagaoPassageiros(comprimento, peso, num_passageiros)
-            elif tipo == "carga":
+            elif tipo == 3:
                 comprimento = float(input("Comprimento: "))
                 peso = float(input("Peso total: "))
                 vagao = VagaoCarga(comprimento, peso)
+            else:
+                print("Opção inválida!")
+                break
+
             composicao.inserir_vagao_fim(vagao)
             composicao.gravar_no_arquivo(nome_arquivo)
 
-        elif opcao == "3":
+        elif opcao == 3:
             composicao.remover_vagao_frente()
             composicao.gravar_no_arquivo(nome_arquivo)
 
-        elif opcao == "4":
+        elif opcao == 4:
             composicao.remover_vagao_fim()
             composicao.gravar_no_arquivo(nome_arquivo)
 
-        elif opcao == "5":
+        elif opcao == 5:
             composicao.diagnostico()
 
-        elif opcao == "6":
+        elif opcao == 6:
             if len(composicao) > 0:
                 composicao[0].imprime()
             else:
                 print("Composição vazia.")
 
-        elif opcao == "7":
+        elif opcao == 7:
             if len(composicao) > 0:
                 composicao[-1].imprime()
             else:
                 print("Composição vazia.")
 
-        elif opcao == "8":
+        elif opcao == 8:
             print("Saindo...")
             break
 
