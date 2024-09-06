@@ -1,5 +1,5 @@
 from collections import deque
-
+import pickle
 
 class Vagao:
     def __init__(self, comprimento, peso):
@@ -46,7 +46,6 @@ class ComposicaoFerroviaria(deque):
         super().__init__()
 
     def carregar_de_arquivo(self, nome_arquivo):
-        import pickle
         try:
             with open(nome_arquivo, 'rb') as f:
                 self.extend(pickle.load(f))
@@ -56,7 +55,6 @@ class ComposicaoFerroviaria(deque):
             self.gravar_no_arquivo(nome_arquivo)
 
     def gravar_no_arquivo(self, nome_arquivo):
-        import pickle
         with open(nome_arquivo, 'wb') as f:
             pickle.dump(list(self), f)
         print("Composição salva com sucesso!")
