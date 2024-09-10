@@ -98,7 +98,6 @@ class ComposicaoFerroviaria(deque):
         print(f"Total de carga: {total_carga} toneladas")
         print(f"Potência total: {total_potencia} HP")
 
-        # Verificação de potência mínima
         if total_peso > 0:
             relacao_hp_por_ton = total_potencia / total_peso
             print(f"Relação HP/Ton: {relacao_hp_por_ton:.2f} HP/Ton")
@@ -129,7 +128,11 @@ def menu():
         print("7. Exibir dados do último vagão")
         print("8. Sair")
 
-        opcao = int(input("Escolha uma opção: "))
+        try:
+            opcao = int(input("Escolha uma opção: "))
+        except ValueError:
+            print("Entrada inválida. Por favor, insira um número.")
+            continue
 
         if opcao == 1:
             tipo = int(input(
